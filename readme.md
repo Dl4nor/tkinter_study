@@ -14,8 +14,9 @@ outro projeto, um sistema PDV para minimercados chamado [WYS PDV](https://github
 
 ## 💻 Aulas:
 
- | AULA     | Conteúdo                                | Link   |
+ | Aula     | Conteúdo                                | Link   |
  |:--------:|:---------------------------------------:|:------:|
  | Aula 1   | Primeira Janela, criação e configuração | https://youtu.be/RtrZcoVD1WM?si=PFXvCAJQ_ib5Xqb0 |
  | Aula 2   | Criação e configuração dos Frames       | https://youtu.be/1dP7k5kvpq0?si=dFUpg2GOwn_IU8Tz |
+ | Aula 3   | Criação dos botões                      | https://www.youtube.com/watch?v=GvdAArHMqdo      |
 
