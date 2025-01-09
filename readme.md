@@ -27,5 +27,6 @@ outro projeto, um sistema PDV para minimercados chamado [WYS PDV](https://github
  | Aula 8   | Criando Banco de dados Sqlite           | https://www.youtube.com/watch?v=8a9QyBieKBo      |
  | Aula 9   | Crud parte 1 - Função add_cliente       | https://www.youtube.com/watch?v=q-erf5w78Yc      |
  | Aula 10  | Crud parte 2 - Função select & delete   | https://www.youtube.com/watch?v=J3u6-Sf_xK4      |
+ | Aula 11  | Crud parte 3 - Função alterar           | https://www.youtube.com/watch?v=Epz87iYfXtw      |
 
 

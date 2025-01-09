@@ -85,12 +85,27 @@ class Functions():
         self.cursor.execute("""
             DELETE FROM tb_clientes
             WHERE cod = ?
-        """, (self.codigo))
+        """, (self.codigo,))
         self.conn.commit()
 
         self.desconecta_bd()
         self.limpa_tela()
         self.select_lista()
+
+    def altera_cliente(self):
+        self.variaveis()
+        self.conecta_bd()
+
+        self.cursor.execute("""
+            UPDATE tb_clientes
+            SET nome_cliente = ?, telefone = ?, cidade = ?
+            WHERE cod = ?
+        """, (self.nome, self.telefone, self.cidade, self.codigo))
+
+        self.conn.commit()
+        self.desconecta_bd()
+        self.select_lista()
+        self.limpa_tela()
 
 class Application(Functions):
     def __init__(self):
@@ -138,7 +153,8 @@ class Application(Functions):
         self.bt_novo.place(relx=0.58, rely=0.1, relwidth=0.1, relheight=0.15)
         ### Criação do botão alterar
         self.bt_alterar = Button(self.frame1, text="Alterar", bd=0.7, bg="#1f7a8c", fg="white",
-                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white")
+                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white",
+                                command=self.altera_cliente)
         self.bt_alterar.place(relx=0.69, rely=0.1, relwidth=0.1, relheight=0.15)
         ### Criação do botão apagar
         self.bt_apagar = Button(self.frame1, text="Apagar", bd=0.7, bg="#1f7a8c", fg="white",
