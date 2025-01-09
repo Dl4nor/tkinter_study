@@ -20,5 +20,6 @@ outro projeto, um sistema PDV para minimercados chamado [WYS PDV](https://github
  | Aula 2   | Criação e configuração dos Frames       | https://youtu.be/1dP7k5kvpq0?si=dFUpg2GOwn_IU8Tz |
  | Aula 3   | Criação dos botões                      | https://www.youtube.com/watch?v=GvdAArHMqdo      |
  | Aula 4   | Criação de Labels e Entrys              | https://www.youtube.com/watch?v=rUH8DQXUfH4      |
+ | Aula 5   | Estilizando Widgets                     | https://www.youtube.com/watch?v=mZWYMicEEUQ      |
  
 

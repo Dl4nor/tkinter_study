@@ -30,23 +30,28 @@ class Application():
 
     def widgets_frame1(self):
         ### Criação do botão limpar
-        self.bt_limpar = Button(self.frame1, text="Limpar")
+        self.bt_limpar = Button(self.frame1, text="Limpar", bd=0.7, bg="#1f7a8c", fg="white",
+                                font=('calibri', 11, 'bold'))
         self.bt_limpar.place(relx=0.2, rely=0.1, relwidth=0.1, relheight=0.15)
         ### Criação do botão buscar
-        self.bt_limpar = Button(self.frame1, text="Buscar")
-        self.bt_limpar.place(relx=0.31, rely=0.1, relwidth=0.1, relheight=0.15)
+        self.bt_limpar = Button(self.frame1, text="Buscar", bd=0.7, bg="#1f7a8c", fg="white",
+                                font=('calibri', 11, 'bold'))
+        self.bt_limpar.place(relx=0.31, rely=0.1, relwidth=0.1, relheight=0.15, )
         ### Criação do botão novo
-        self.bt_limpar = Button(self.frame1, text="Novo")
+        self.bt_limpar = Button(self.frame1, text="Novo", bd=0.7, bg="#1f7a8c", fg="white",
+                                font=('calibri', 11, 'bold'))
         self.bt_limpar.place(relx=0.58, rely=0.1, relwidth=0.1, relheight=0.15)
         ### Criação do botão alterar
-        self.bt_limpar = Button(self.frame1, text="Alterar")
+        self.bt_limpar = Button(self.frame1, text="Alterar", bd=0.7, bg="#1f7a8c", fg="white",
+                                font=('calibri', 11, 'bold'))
         self.bt_limpar.place(relx=0.69, rely=0.1, relwidth=0.1, relheight=0.15)
         ### Criação do botão apagar
-        self.bt_limpar = Button(self.frame1, text="Apagar")
+        self.bt_limpar = Button(self.frame1, text="Apagar", bd=0.7, bg="#1f7a8c", fg="white",
+                                font=('calibri', 11, 'bold'))
         self.bt_limpar.place(relx=0.8, rely=0.1, relwidth=0.1, relheight=0.15)
 
         ### Criando da label e entrada do codigo
-        self.lb_codigo = Label(self.frame1, text="Código", background='#d0e0f5')
+        self.lb_codigo = Label(self.frame1, text="Código", background='#d0e0f5', fg="black")
         self.lb_codigo.place(relx=0.05, rely=0.04)
 
         self.codigo_entry = Entry(self.frame1)
