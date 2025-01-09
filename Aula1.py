@@ -15,7 +15,7 @@ class Functions():
         self.conn = sqlite3.connect("db_clientes.sqlite")
         self.cursor = self.conn.cursor(); print('Conectando ao banco...')
     def desconecta_bd(self):
-        self.conn.close(); print("Tabela clientes criada")
+        self.conn.close(); print("Desconectando do banco...")
     def montaTabelas(self):
         self.conecta_bd()
         ### Criação da tabela
@@ -30,6 +30,39 @@ class Functions():
         self.conn.commit()
         self.desconecta_bd()
 
+    def add_cliente(self):
+        self.codigo = self.codigo_entry.get()
+        self.nome = self.nome_entry.get()
+        self.telefone = self.telefone_entry.get()
+        self.cidade = self.cidade_entry.get()
+
+        self.conecta_bd()
+
+        self.cursor.execute("""
+            INSERT INTO tb_clientes (nome_cliente, telefone, cidade)
+            VALUES (?, ?, ?);
+        """, (self.nome, self.telefone, self.cidade))
+        self.conn.commit()
+
+        self.desconecta_bd()
+
+        self.select_lista()
+        self.limpa_tela()
+
+    def select_lista(self):
+        self.listaCli.delete(*self.listaCli.get_children())
+        
+        self.conecta_bd()
+
+        lista = self.cursor.execute("""
+            SELECT cod, nome_cliente, telefone, cidade
+            FROM tb_clientes
+            ORDER BY nome_cliente ASC;
+        """)
+        for i in lista:
+            self.listaCli.insert("", END, values=i)
+
+        self.desconecta_bd()
 
 class Application(Functions):
     def __init__(self):
@@ -39,6 +72,7 @@ class Application(Functions):
         self.widgets_frame1()
         self.lista_frame2()
         self.montaTabelas()
+        self.select_lista()
         root.mainloop()
 
     def tela(self):
@@ -71,7 +105,8 @@ class Application(Functions):
         self.bt_buscar.place(relx=0.31, rely=0.1, relwidth=0.1, relheight=0.15, )
         ### Criação do botão novo
         self.bt_novo = Button(self.frame1, text="Novo", bd=0.7, bg="#1f7a8c", fg="white",
-                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white")
+                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white",
+                                command=self.add_cliente)
         self.bt_novo.place(relx=0.58, rely=0.1, relwidth=0.1, relheight=0.15)
         ### Criação do botão alterar
         self.bt_alterar = Button(self.frame1, text="Alterar", bd=0.7, bg="#1f7a8c", fg="white",

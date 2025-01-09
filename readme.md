@@ -25,4 +25,6 @@ outro projeto, um sistema PDV para minimercados chamado [WYS PDV](https://github
  |          | Criação da TreeView (parte 2)           | https://www.youtube.com/watch?v=hD7YNAdAb34      |
  | Aula 7   | Adicionando função no botão Limpar      | https://www.youtube.com/watch?v=PYHVFppB8PI      |
  | Aula 8   | Criando Banco de dados Sqlite           | https://www.youtube.com/watch?v=8a9QyBieKBo      |
+ | Aula 9   | Crud parte 1 - Função add_cliente       | https://www.youtube.com/watch?v=q-erf5w78Yc      |
+ 
 
