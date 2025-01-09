@@ -3,7 +3,14 @@ from tkinter import ttk
 
 root = Tk()
 
-class Application():
+class Functions():
+    def limpa_tela(self):
+        self.codigo_entry.delete(0, END)
+        self.nome_entry.delete(0, END)
+        self.telefone_entry.delete(0, END)
+        self.cidade_entry.delete(0, END)
+
+class Application(Functions):
     def __init__(self):
         self.root = root
         self.tela()
@@ -33,24 +40,25 @@ class Application():
     def widgets_frame1(self):
         ### Criação do botão limpar
         self.bt_limpar = Button(self.frame1, text="Limpar", bd=0.7, bg="#1f7a8c", fg="white",
-                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white")
+                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white",
+                                command=self.limpa_tela)
         self.bt_limpar.place(relx=0.2, rely=0.1, relwidth=0.1, relheight=0.15)
         ### Criação do botão buscar
-        self.bt_limpar = Button(self.frame1, text="Buscar", bd=0.7, bg="#1f7a8c", fg="white",
+        self.bt_buscar = Button(self.frame1, text="Buscar", bd=0.7, bg="#1f7a8c", fg="white",
                                 font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white")
-        self.bt_limpar.place(relx=0.31, rely=0.1, relwidth=0.1, relheight=0.15, )
+        self.bt_buscar.place(relx=0.31, rely=0.1, relwidth=0.1, relheight=0.15, )
         ### Criação do botão novo
-        self.bt_limpar = Button(self.frame1, text="Novo", bd=0.7, bg="#1f7a8c", fg="white",
+        self.bt_novo = Button(self.frame1, text="Novo", bd=0.7, bg="#1f7a8c", fg="white",
                                 font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white")
-        self.bt_limpar.place(relx=0.58, rely=0.1, relwidth=0.1, relheight=0.15)
+        self.bt_novo.place(relx=0.58, rely=0.1, relwidth=0.1, relheight=0.15)
         ### Criação do botão alterar
-        self.bt_limpar = Button(self.frame1, text="Alterar", bd=0.7, bg="#1f7a8c", fg="white",
+        self.bt_alterar = Button(self.frame1, text="Alterar", bd=0.7, bg="#1f7a8c", fg="white",
                                 font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white")
-        self.bt_limpar.place(relx=0.69, rely=0.1, relwidth=0.1, relheight=0.15)
+        self.bt_alterar.place(relx=0.69, rely=0.1, relwidth=0.1, relheight=0.15)
         ### Criação do botão apagar
-        self.bt_limpar = Button(self.frame1, text="Apagar", bd=0.7, bg="#1f7a8c", fg="white",
+        self.bt_apagar = Button(self.frame1, text="Apagar", bd=0.7, bg="#1f7a8c", fg="white",
                                 font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white")
-        self.bt_limpar.place(relx=0.8, rely=0.1, relwidth=0.1, relheight=0.15)
+        self.bt_apagar.place(relx=0.8, rely=0.1, relwidth=0.1, relheight=0.15)
 
         ### Criando da label e entrada do codigo
         self.lb_codigo = Label(self.frame1, text="Código", background='#d0e0f5', fg="black")
