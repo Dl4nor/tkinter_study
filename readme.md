@@ -21,5 +21,6 @@ outro projeto, um sistema PDV para minimercados chamado [WYS PDV](https://github
  | Aula 3   | Criação dos botões                      | https://www.youtube.com/watch?v=GvdAArHMqdo      |
  | Aula 4   | Criação de Labels e Entrys              | https://www.youtube.com/watch?v=rUH8DQXUfH4      |
  | Aula 5   | Estilizando Widgets                     | https://www.youtube.com/watch?v=mZWYMicEEUQ      |
- 
+ | Aula 6   | Criação da TreeView (parte 1)           | https://www.youtube.com/watch?v=BTG3p8BfKQ0      |
+ |          | Criação da TreeView (parte 2)           | https://www.youtube.com/watch?v=hD7YNAdAb34      |
 

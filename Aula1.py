@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 
 root = Tk()
 
@@ -8,6 +9,7 @@ class Application():
         self.tela()
         self.frames_da_tela()
         self.widgets_frame1()
+        self.lista_frame2()
         root.mainloop()
 
     def tela(self):
@@ -31,23 +33,23 @@ class Application():
     def widgets_frame1(self):
         ### Criação do botão limpar
         self.bt_limpar = Button(self.frame1, text="Limpar", bd=0.7, bg="#1f7a8c", fg="white",
-                                font=('calibri', 11, 'bold'))
+                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white")
         self.bt_limpar.place(relx=0.2, rely=0.1, relwidth=0.1, relheight=0.15)
         ### Criação do botão buscar
         self.bt_limpar = Button(self.frame1, text="Buscar", bd=0.7, bg="#1f7a8c", fg="white",
-                                font=('calibri', 11, 'bold'))
+                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white")
         self.bt_limpar.place(relx=0.31, rely=0.1, relwidth=0.1, relheight=0.15, )
         ### Criação do botão novo
         self.bt_limpar = Button(self.frame1, text="Novo", bd=0.7, bg="#1f7a8c", fg="white",
-                                font=('calibri', 11, 'bold'))
+                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white")
         self.bt_limpar.place(relx=0.58, rely=0.1, relwidth=0.1, relheight=0.15)
         ### Criação do botão alterar
         self.bt_limpar = Button(self.frame1, text="Alterar", bd=0.7, bg="#1f7a8c", fg="white",
-                                font=('calibri', 11, 'bold'))
+                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white")
         self.bt_limpar.place(relx=0.69, rely=0.1, relwidth=0.1, relheight=0.15)
         ### Criação do botão apagar
         self.bt_limpar = Button(self.frame1, text="Apagar", bd=0.7, bg="#1f7a8c", fg="white",
-                                font=('calibri', 11, 'bold'))
+                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white")
         self.bt_limpar.place(relx=0.8, rely=0.1, relwidth=0.1, relheight=0.15)
 
         ### Criando da label e entrada do codigo
@@ -78,4 +80,24 @@ class Application():
         self.cidade_entry = Entry(self.frame1)
         self.cidade_entry.place(relx=0.5, rely=0.7, relwidth=0.4)
     
+    def lista_frame2(self):
+        self.listaCli = ttk.Treeview(self.frame2, height=3, columns=("col1", "col2", "col3", "col4"))
+        self.listaCli.heading("#0", text="")
+        self.listaCli.heading("#1", text="Código")
+        self.listaCli.heading("#2", text="Nome")
+        self.listaCli.heading("#3", text="Telefone")
+        self.listaCli.heading("#4", text="Cidade")
+
+        self.listaCli.column("#0", width=25, minwidth=25)
+        self.listaCli.column("#1", width=75, minwidth=75)
+        self.listaCli.column("#2", width=200, minwidth=200)
+        self.listaCli.column("#3", width=125, minwidth=125)
+        self.listaCli.column("#4", width=125, minwidth=125)
+
+        self.listaCli.place(relx=0.01, rely=0.1, relwidth=0.95, relheight=0.85)
+
+        self.scrollLista = Scrollbar(self.frame2, orient='vertical')
+        self.listaCli.configure(yscroll=self.scrollLista.set)
+        self.scrollLista.place(relx=0.96, rely=0.1, relwidth=0.02, relheight=0.85)
+
 Application()
