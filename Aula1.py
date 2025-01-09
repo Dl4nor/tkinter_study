@@ -30,11 +30,14 @@ class Functions():
         self.conn.commit()
         self.desconecta_bd()
 
-    def add_cliente(self):
+    def variaveis(self):
         self.codigo = self.codigo_entry.get()
         self.nome = self.nome_entry.get()
         self.telefone = self.telefone_entry.get()
         self.cidade = self.cidade_entry.get()
+
+    def add_cliente(self):
+        self.variaveis()
 
         self.conecta_bd()
 
@@ -63,6 +66,31 @@ class Functions():
             self.listaCli.insert("", END, values=i)
 
         self.desconecta_bd()
+
+    def onDloubleClick(self, event):
+        self.limpa_tela()
+        self.listaCli.selection()
+
+        for n in self.listaCli.selection():
+            col1, col2, col3, col4 = self.listaCli.item(n, 'values')
+            self.codigo_entry.insert(END, col1)
+            self.nome_entry.insert(END, col2)
+            self.telefone_entry.insert(END, col3)
+            self.cidade_entry.insert(END, col4)
+
+    def deleta_cliente(self):
+        self.variaveis()
+        self.conecta_bd()
+
+        self.cursor.execute("""
+            DELETE FROM tb_clientes
+            WHERE cod = ?
+        """, (self.codigo))
+        self.conn.commit()
+
+        self.desconecta_bd()
+        self.limpa_tela()
+        self.select_lista()
 
 class Application(Functions):
     def __init__(self):
@@ -114,7 +142,8 @@ class Application(Functions):
         self.bt_alterar.place(relx=0.69, rely=0.1, relwidth=0.1, relheight=0.15)
         ### Criação do botão apagar
         self.bt_apagar = Button(self.frame1, text="Apagar", bd=0.7, bg="#1f7a8c", fg="white",
-                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white")
+                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white",
+                                command=self.deleta_cliente)
         self.bt_apagar.place(relx=0.8, rely=0.1, relwidth=0.1, relheight=0.15)
 
         ### Criando da label e entrada do codigo
@@ -164,5 +193,6 @@ class Application(Functions):
         self.scrollLista = Scrollbar(self.frame2, orient='vertical')
         self.listaCli.configure(yscroll=self.scrollLista.set)
         self.scrollLista.place(relx=0.96, rely=0.1, relwidth=0.02, relheight=0.85)
+        self.listaCli.bind("<Double-1>", self.onDloubleClick)
 
 Application()
