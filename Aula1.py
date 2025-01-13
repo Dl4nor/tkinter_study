@@ -112,6 +112,26 @@ class Functions():
 
         self.desconecta_bd()
 
+    def busca_cliente(self):
+        self.conecta_bd()
+        
+        self.listaCli.delete(*self.listaCli.get_children())
+
+        self.nome_entry.insert(END, '%')
+        nome = self.nome_entry.get()
+        self.cursor.execute("""
+            SELECT cod, nome_cliente, telefone, cidade
+            FROM tb_clientes
+            WHERE nome_cliente LIKE '%s'
+            ORDER BY nome_cliente ASC;
+        """ % nome)
+        buscanomeCli = self.cursor.fetchall()
+        for i in buscanomeCli:
+            self.listaCli.insert("", END, values=i)
+        self.limpa_tela()
+
+        self.desconecta_bd()
+
     def onDloubleClick(self, event):
         self.limpa_tela()
         self.listaCli.selection()
@@ -190,7 +210,8 @@ class Application(Functions, Relatorios):
         self.bt_limpar.place(relx=0.2, rely=0.1, relwidth=0.1, relheight=0.15)
         ### Criação do botão buscar
         self.bt_buscar = Button(self.frame1, text="Buscar", bd=0.7, bg="#1f7a8c", fg="white",
-                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white")
+                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white",
+                                command=self.busca_cliente)
         self.bt_buscar.place(relx=0.31, rely=0.1, relwidth=0.1, relheight=0.15, )
         ### Criação do botão novo
         self.bt_novo = Button(self.frame1, text="Novo", bd=0.7, bg="#1f7a8c", fg="white",
