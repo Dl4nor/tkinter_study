@@ -203,6 +203,9 @@ class Application(Functions, Relatorios):
         self.frame2.place(relx=0.02, rely=0.5, relwidth=0.96, relheight=0.46)
 
     def widgets_frame1(self):
+        self.canvas_bt = Canvas(self.frame1, bd=0, bg='#bfdbf7', highlightbackground='black',
+                                highlightthickness=1)
+        self.canvas_bt.place(relx=0.195, rely=0.08, relwidth=0.223, relheight=0.19)
         ### Criação do botão limpar
         self.bt_limpar = Button(self.frame1, text="Limpar", bd=0.7, bg="#1f7a8c", fg="white",
                                 font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white",

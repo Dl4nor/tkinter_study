@@ -31,5 +31,6 @@ outro projeto, um sistema PDV para minimercados chamado [WYS PDV](https://github
  | Aula 12  | Criando Menu Bar                        | https://www.youtube.com/watch?v=6IhJjNTgLqc      |
  | Aula 13  | Gerando e exibindo relatórios em PDF    | https://www.youtube.com/watch?v=L3Yv8RgNe2A      |
  | Aula 14  | Criando a função do botão 'Buscar'      | https://www.youtube.com/watch?v=cuQPnBFeZQY      |
+ | Aula 15  | Estilizando Botões                      | https://www.youtube.com/watch?v=ACDYzd-S3SA      |
 
 
