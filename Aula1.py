@@ -1,8 +1,53 @@
 from tkinter import *
 from tkinter import ttk
 import sqlite3
+import os
+
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter, A4
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.platypus import SimpleDocTemplate, Image
+import webbrowser
 
 root = Tk()
+
+class Relatorios():
+    def printCliente(self):
+        pathRelCli = os.path.abspath("./relatorios/Cliente-"+self.codigoRel+".pdf")
+        webbrowser.open(pathRelCli)
+    
+    def gerarRelatCliente(self):
+        self.codigoRel = self.codigo_entry.get()
+        self.nomeRel = self.nome_entry.get()
+        self.foneRel = self.telefone_entry.get()
+        self.cidadeRel = self.cidade_entry.get()
+
+        if not os.path.exists("./relatorios"):
+            os.makedirs("./relatorios")
+
+        self.c = canvas.Canvas("./relatorios/Cliente-"+self.codigoRel+".pdf")
+
+        self.c.setFont("Helvetica-Bold", 24)
+        self.c.drawString(200, 790, 'Ficha do Cliente')
+
+        self.c.setFont("Helvetica-Bold", 18)
+        self.c.drawString(50, 700, 'Código: ')
+        self.c.drawString(50, 670, 'Nome: ')
+        self.c.drawString(50, 640, 'Telefone: ')
+        self.c.drawString(50, 610, 'Cidade: ')
+
+        self.c.setFont("Helvetica", 18)
+        self.c.drawString(150, 700, self.codigoRel)
+        self.c.drawString(150, 670, self.nomeRel)
+        self.c.drawString(150, 640, self.foneRel)
+        self.c.drawString(150, 610, self.cidadeRel)
+
+        self.c.rect(20, 590, 550, 140, fill=False, stroke=True)
+
+        self.c.showPage()
+        self.c.save()
+        self.printCliente()
 
 class Functions():
     def limpa_tela(self):
@@ -107,7 +152,7 @@ class Functions():
         self.select_lista()
         self.limpa_tela()
 
-class Application(Functions):
+class Application(Functions, Relatorios):
     def __init__(self):
         self.root = root
         self.tela()
@@ -213,17 +258,21 @@ class Application(Functions):
         self.listaCli.bind("<Double-1>", self.onDloubleClick)
 
     def Menus(self):
-        menubar = Menu(self.root)
+        menubar = Menu(self.root, tearoff=0)
         self.root.config(menu=menubar)
-        filemenu = Menu(menubar)
-        filemenu2 = Menu(menubar)
+        filemenu = Menu(menubar, tearoff=0)
+        filemenu2 = Menu(menubar, tearoff=0)
+        filemenu3 = Menu(menubar, tearoff=0)
 
         def Quit(): self.root.destroy()
 
         menubar.add_cascade(label= "Opções", menu= filemenu)
-        menubar.add_cascade(label= "Sobre", menu= filemenu2)
+        menubar.add_cascade(label= "Relatórios", menu= filemenu2)
+        menubar.add_cascade(label= "Sobre", menu=filemenu3)
 
         filemenu.add_command(label= "Sair", command= Quit)
-        filemenu2.add_command(label= "Limpa Cliente", command= self.limpa_tela)
+        filemenu.add_command(label= "Limpa Cliente", command= self.limpa_tela)
+
+        filemenu2.add_command(label= "Ficha do Cliente", command=self.gerarRelatCliente)
 
 Application()

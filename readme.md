@@ -29,5 +29,6 @@ outro projeto, um sistema PDV para minimercados chamado [WYS PDV](https://github
  | Aula 10  | Crud parte 2 - Função select & delete   | https://www.youtube.com/watch?v=J3u6-Sf_xK4      |
  | Aula 11  | Crud parte 3 - Função alterar           | https://www.youtube.com/watch?v=Epz87iYfXtw      |
  | Aula 12  | Criando Menu Bar                        | https://www.youtube.com/watch?v=6IhJjNTgLqc      |
+ | Aula 13  | Gerando e exibindo relatórios em PDF    | https://www.youtube.com/watch?v=L3Yv8RgNe2A      |
 
 
