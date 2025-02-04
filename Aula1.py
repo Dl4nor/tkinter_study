@@ -9,6 +9,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import SimpleDocTemplate, Image
 import webbrowser
+from PIL import ImageTk, Image  # Botões como imagem
 
 root = Tk()
 
@@ -81,7 +82,7 @@ class Functions():
         self.telefone = self.telefone_entry.get()
         self.cidade = self.cidade_entry.get()
 
-    def add_cliente(self):
+    def add_cliente(self, event=None):
         self.variaveis()
 
         self.conecta_bd()
@@ -206,26 +207,42 @@ class Application(Functions, Relatorios):
         self.canvas_bt = Canvas(self.frame1, bd=0, bg='#bfdbf7', highlightbackground='black',
                                 highlightthickness=1)
         self.canvas_bt.place(relx=0.195, rely=0.08, relwidth=0.223, relheight=0.19)
+
         ### Criação do botão limpar
         self.bt_limpar = Button(self.frame1, text="Limpar", bd=0.7, bg="#1f7a8c", fg="white",
                                 font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white",
                                 command=self.limpa_tela)
         self.bt_limpar.place(relx=0.2, rely=0.1, relwidth=0.1, relheight=0.15)
+
         ### Criação do botão buscar
         self.bt_buscar = Button(self.frame1, text="Buscar", bd=0.7, bg="#1f7a8c", fg="white",
                                 font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white",
                                 command=self.busca_cliente)
         self.bt_buscar.place(relx=0.31, rely=0.1, relwidth=0.1, relheight=0.15, )
+
         ### Criação do botão novo
+        ## imgNovo - Botão redondo porém meio zoado
+        # self.imgNovo = PhotoImage(file= "./assets/images/bt_novo.png")
+        # self.imgNovo = self.imgNovo.subsample(9, 9)
+        # self.style = ttk.Style()
+        # self.style.configure("BW.TButton", relwidth=1, relheight=1, foreground="gray", 
+        #                      borderwidth=0, bordercolor="gray", background='#022b3a',
+        #                      image= self.imgNovo)
+        # 
+        # self.bt_novo = ttk.Button(self.frame1, style="BW.TButton", command= self.add_cliente)
+
         self.bt_novo = Button(self.frame1, text="Novo", bd=0.7, bg="#1f7a8c", fg="white",
-                                font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white",
-                                command=self.add_cliente)
+                             font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white",
+                             command=self.add_cliente)
         self.bt_novo.place(relx=0.58, rely=0.1, relwidth=0.1, relheight=0.15)
+        # self.bt_novo.config(image= self.imgNovo)
+        
         ### Criação do botão alterar
         self.bt_alterar = Button(self.frame1, text="Alterar", bd=0.7, bg="#1f7a8c", fg="white",
                                 font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white",
                                 command=self.altera_cliente)
         self.bt_alterar.place(relx=0.69, rely=0.1, relwidth=0.1, relheight=0.15)
+
         ### Criação do botão apagar
         self.bt_apagar = Button(self.frame1, text="Apagar", bd=0.7, bg="#1f7a8c", fg="white",
                                 font=('calibri', 11, 'bold'), activebackground="#022b3a", activeforeground="white",
@@ -237,6 +254,7 @@ class Application(Functions, Relatorios):
         self.lb_codigo.place(relx=0.05, rely=0.04)
 
         self.codigo_entry = Entry(self.frame1)
+        self.codigo_entry.bind("<Return>", func=self.add_cliente)
         self.codigo_entry.place(relx=0.05, rely=0.14, relwidth=0.13)
 
         ### Criando da label e entrada do nome
